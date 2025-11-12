@@ -1,0 +1,60 @@
+
+/*Bug Tracker: https://github.com/Benzeel/Youtube-Acrylic-Menus/issues*/
+
+/*account, notification and account switching menu theming*/
+ytd-multi-page-menu-renderer.style-scope.ytd-popup-container,
+html body ytd-app.yte-ytd-app-restore-fullscreen-scrolling ytd-popup-container.style-scope.ytd-app tp-yt-iron-dropdown.style-scope.ytd-popup-container div#contentWrapper.style-scope.tp-yt-iron-dropdown ytd-multi-page-menu-renderer.style-scope.ytd-popup-container {
+        backdrop-filter: blur(35px);
+        background: #00000057;
+}
+
+    ytd-multi-page-menu-renderer.style-scope.ytd-popup-container div#header.style-scope.ytd-multi-page-menu-renderer ytd-simple-menu-header-renderer.style-scope.ytd-multi-page-menu-renderer {
+        background: transparent;
+        background-color: transparent;
+}
+
+    ytd-multi-page-menu-renderer.style-scope.ytd-popup-container div#submenu.menu-container.style-scope.ytd-multi-page-menu-renderer ytd-multi-page-menu-renderer.style-scope.ytd-multi-page-menu-renderer {
+        background: transparent;
+        background-color: transparent;
+}
+
+/*sidebar theming*/ /*odd dark flash when closing it, sorry abt that*/
+html body.lock-scrollbar ytd-app div#content.style-scope.ytd-app tp-yt-app-drawer#guide.style-scope.ytd-app div#contentContainer.style-scope.tp-yt-app-drawer div#guide-wrapper.style-scope.ytd-app div#guide-content.style-scope.ytd-app {
+    background: transparent;
+}
+html body.lock-scrollbar ytd-app div#content.style-scope.ytd-app tp-yt-app-drawer#guide.style-scope.ytd-app div#contentContainer.style-scope.tp-yt-app-drawer {
+    background: #15151585;
+    backdrop-filter: blur(25px);
+}
+html body.lock-scrollbar ytd-app div#content.style-scope.ytd-app tp-yt-app-drawer#guide.style-scope.ytd-app div#scrim.style-scope.tp-yt-app-drawer.visible {
+    background: transparent;
+}
+
+/*search popover styling*/
+.ytSearchboxComponentSuggestionsContainerScrollable {
+    background: #252525bd;
+    backdrop-filter: blur(25px);
+}
+
+/* menu theming*/
+.ytContextualSheetLayoutHost {
+    background-color: #2929299e;
+}
+ytd-menu-popup-renderer.style-scope {
+    background: #262626bd;
+}
+html body ytd-app div#content.style-scope.ytd-app ytd-page-manager#page-manager.style-scope.ytd-app ytd-watch-flexy.style-scope.ytd-page-manager.watch-root-element.hide-skeleton div#columns.style-scope.ytd-watch-flexy div#primary.style-scope.ytd-watch-flexy div#primary-inner.style-scope.ytd-watch-flexy div#below.style-scope.ytd-watch-flexy ytd-comments#comments.style-scope.ytd-watch-flexy ytd-item-section-renderer#sections.style-scope.ytd-comments div#header.style-scope.ytd-item-section-renderer ytd-comments-header-renderer.style-scope.ytd-item-section-renderer div#title.style-scope.ytd-comments-header-renderer div#additional-section.style-scope.ytd-comments-header-renderer span#sort-menu.style-scope.ytd-comments-header-renderer yt-sort-filter-sub-menu-renderer.style-scope.ytd-comments-header-renderer yt-dropdown-menu.style-scope.yt-sort-filter-sub-menu-renderer.has-items tp-yt-paper-menu-button.style-scope.yt-dropdown-menu tp-yt-iron-dropdown#dropdown.style-scope.tp-yt-paper-menu-button div#contentWrapper.style-scope.tp-yt-iron-dropdown div.dropdown-content.style-scope.tp-yt-paper-menu-button tp-yt-paper-listbox#menu.dropdown-content.style-scope.yt-dropdown-menu {
+    background: #0000;
+    backdrop-filter: blur(20px)
+}
+
+/*share menu*/
+tp-yt-paper-dialog.style-scope {
+    background: #272727a1;
+    backdrop-filter: blur(20px)
+}
+html body ytd-app ytd-popup-container.style-scope.ytd-app tp-yt-paper-dialog.style-scope.ytd-popup-container yt-unified-share-panel-renderer.style-scope.ytd-popup-container tp-yt-paper-dialog-scrollable#scroller.style-scope.yt-unified-share-panel-renderer.no-padding.scrolled-to-bottom div#scrollable.scrollable.style-scope.tp-yt-paper-dialog-scrollable div#contents.style-scope.yt-unified-share-panel-renderer yt-third-party-network-section-renderer.style-scope.yt-unified-share-panel-renderer div#copy-link.style-scope.yt-third-party-network-section-renderer yt-copy-link-renderer.style-scope.yt-third-party-network-section-renderer div#bar.style-scope.yt-copy-link-renderer {
+background: #00000063;
+}
+
+
