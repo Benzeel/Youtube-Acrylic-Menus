@@ -1,3 +1,11 @@
+/* ==UserStyle==
+@name           Youtube Acrylic Menus (blurred backrounds)
+@namespace      github.com/openstyles/stylus
+@version        1.0
+@description    add blurring to most menus that pop up on youtube.
+@author         Benzeel
+==/UserStyle== */
+@-moz-document domain("www.youtube.com") {
 
 /*Bug Tracker: https://github.com/Benzeel/Youtube-Acrylic-Menus/issues*/
 
@@ -58,3 +66,19 @@ background: #00000063;
 }
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}
