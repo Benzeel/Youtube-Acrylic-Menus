@@ -73,8 +73,16 @@ background: transparent;
 }
 
 
+/* channel unsubscribe popup*/
+html body ytd-app ytd-popup-container.style-scope.ytd-app tp-yt-paper-dialog.style-scope.ytd-popup-container yt-confirm-dialog-renderer.style-scope.ytd-popup-container {
+background: transparent;
+}
 
-
+/* fix channel posts comment sorting dropdown */
+tp-yt-paper-listbox.yt-dropdown-menu {
+    background: #282828a1;
+    backdrop-filter: blur(15px);
+}
 
 
 
