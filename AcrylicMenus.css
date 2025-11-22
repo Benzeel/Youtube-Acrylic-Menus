@@ -1,9 +1,11 @@
 /* ==UserStyle==
 @name           Youtube Acrylic Menus / Youtube Blurred Menus
 @namespace      github.com/openstyles/stylus
-@version        0.3
+@version        4
 @description    Add translucency to most menus that pop up on youtube.
 @author         Benzeel
+@homepageURL    https://github.com/Benzeel/Youtube-Acrylic-Menus
+@supportURL     https://github.com/Benzeel/Youtube-Acrylic-Menus/issues
 ==/UserStyle== */
 @-moz-document domain("www.youtube.com") {
 
