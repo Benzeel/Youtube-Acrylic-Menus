@@ -9,82 +9,82 @@
 
 /*Bug Tracker: https://github.com/Benzeel/Youtube-Acrylic-Menus/issues*/
 
+
 /*account, notification and account switching menu theming*/
-ytd-multi-page-menu-renderer.style-scope.ytd-popup-container,
-html body ytd-app.yte-ytd-app-restore-fullscreen-scrolling ytd-popup-container.style-scope.ytd-app tp-yt-iron-dropdown.style-scope.ytd-popup-container div#contentWrapper.style-scope.tp-yt-iron-dropdown ytd-multi-page-menu-renderer.style-scope.ytd-popup-container {
+ytd-multi-page-menu-renderer.style-scope.ytd-popup-container {
         backdrop-filter: blur(35px);
         background: #1d1d1dad;
 }
 
-    ytd-multi-page-menu-renderer.style-scope.ytd-popup-container div#header.style-scope.ytd-multi-page-menu-renderer ytd-simple-menu-header-renderer.style-scope.ytd-multi-page-menu-renderer {
-        background: transparent;
-        background-color: transparent;
-}
-
-    ytd-multi-page-menu-renderer.style-scope.ytd-popup-container div#submenu.menu-container.style-scope.ytd-multi-page-menu-renderer ytd-multi-page-menu-renderer.style-scope.ytd-multi-page-menu-renderer {
-        background: transparent;
-        background-color: transparent;
-}
+        .ytd-multi-page-menu-renderer {
+              background: none;
+              background-color: transparent;
+        }
 
 /*sidebar theming*/ 
-html body.lock-scrollbar ytd-app div#content.style-scope.ytd-app tp-yt-app-drawer#guide.style-scope.ytd-app div#contentContainer.style-scope.tp-yt-app-drawer div#guide-wrapper.style-scope.ytd-app div#guide-content.style-scope.ytd-app {
-    background: transparent;
+div#guide-content.style-scope.ytd-app {
+    background: none;
 }
-html body.lock-scrollbar ytd-app div#content.style-scope.ytd-app tp-yt-app-drawer#guide.style-scope.ytd-app div#contentContainer.style-scope.tp-yt-app-drawer {
-    background: #0d0d0dbf;
-    backdrop-filter: blur(10px);
-}
+        div#contentContainer.style-scope.tp-yt-app-drawer {
+           background: #0d0d0dbf;
+           backdrop-filter: blur(10px);
+        }
+        /*disable screen darkening when opening/closing sidebar*/
+        #scrim.visible.tp-yt-app-drawer {
+        	opacity: 0;
+        }
 
-#scrim.visible.tp-yt-app-drawer {
-	opacity: 0;
-}
-
-/*search popover styling*/
-.ytSearchboxComponentSuggestionsContainerScrollable {
-    background: #222222bd;
-    backdrop-filter: blur(35px);
-}
-
-/* text menus theming*/
-.ytContextualSheetLayoutHost {
+/*dropdown theming*/
+.ytContextualSheetLayoutHost, ytd-menu-popup-renderer.style-scope {
     background-color: #1e1e1eb3;
 }
-ytd-menu-popup-renderer.style-scope {
-    background: #1e1e1eb3;
-}
-html body ytd-app div#content.style-scope.ytd-app ytd-page-manager#page-manager.style-scope.ytd-app ytd-watch-flexy.style-scope.ytd-page-manager.watch-root-element.hide-skeleton div#columns.style-scope.ytd-watch-flexy div#primary.style-scope.ytd-watch-flexy div#primary-inner.style-scope.ytd-watch-flexy div#below.style-scope.ytd-watch-flexy ytd-comments#comments.style-scope.ytd-watch-flexy ytd-item-section-renderer#sections.style-scope.ytd-comments div#header.style-scope.ytd-item-section-renderer ytd-comments-header-renderer.style-scope.ytd-item-section-renderer div#title.style-scope.ytd-comments-header-renderer div#additional-section.style-scope.ytd-comments-header-renderer span#sort-menu.style-scope.ytd-comments-header-renderer yt-sort-filter-sub-menu-renderer.style-scope.ytd-comments-header-renderer yt-dropdown-menu.style-scope.yt-sort-filter-sub-menu-renderer.has-items tp-yt-paper-menu-button.style-scope.yt-dropdown-menu tp-yt-iron-dropdown#dropdown.style-scope.tp-yt-paper-menu-button div#contentWrapper.style-scope.tp-yt-iron-dropdown div.dropdown-content.style-scope.tp-yt-paper-menu-button tp-yt-paper-listbox#menu.dropdown-content.style-scope.yt-dropdown-menu {
-    background: #0000;
-    backdrop-filter: blur(35px)
-}
+        /* comment sorting dropdown*/
+        tp-yt-paper-listbox#menu.dropdown-content.style-scope.yt-dropdown-menu {
+           background: #4f4f4f2b;
+           backdrop-filter: blur(15px)
+        }
+        /*comment sorting dropdown */
+        tp-yt-paper-listbox.yt-dropdown-menu {
+           background: #282828a1;
+           backdrop-filter: blur(15px);
+        }
+        /*create dropdown */
+        ytd-multi-page-menu-renderer.style-scope.ytd-popup-container {
+        background: #7575752e;
+        }
 
 /*share menu*/
 tp-yt-paper-dialog.style-scope {
     background: #282828a1;
     backdrop-filter: blur(30px)
 }
-html body ytd-app ytd-popup-container.style-scope.ytd-app tp-yt-paper-dialog.style-scope.ytd-popup-container yt-unified-share-panel-renderer.style-scope.ytd-popup-container tp-yt-paper-dialog-scrollable#scroller.style-scope.yt-unified-share-panel-renderer.no-padding.scrolled-to-bottom div#scrollable.scrollable.style-scope.tp-yt-paper-dialog-scrollable div#contents.style-scope.yt-unified-share-panel-renderer yt-third-party-network-section-renderer.style-scope.yt-unified-share-panel-renderer div#copy-link.style-scope.yt-third-party-network-section-renderer yt-copy-link-renderer.style-scope.yt-third-party-network-section-renderer div#bar.style-scope.yt-copy-link-renderer {
-background: #00000063;
-}
+    /*link bar transparency*/
+    div#bar.style-scope.yt-copy-link-renderer {
+    background: #00000063;
+    }
 
     
-/* collaborators popup */
-html body ytd-app ytd-popup-container.style-scope.ytd-app tp-yt-paper-dialog.style-scope.ytd-popup-container yt-dialog-view-model.ytDialogViewModelHost.ytDialogViewModelResetSpacing dialog-layout.yt-spec-dialog-layout.yt-spec-dialog-layout--dialog-layout-responsive {
-background: transparent;
+/*search popover styling*/
+.ytSearchboxComponentSuggestionsContainerScrollable {
+    background: #222222bd;
+    backdrop-filter: blur(35px);
 }
 
 
-/* channel unsubscribe popup*/
-html body ytd-app ytd-popup-container.style-scope.ytd-app tp-yt-paper-dialog.style-scope.ytd-popup-container yt-confirm-dialog-renderer.style-scope.ytd-popup-container {
-background: transparent;
+/* -------- Patches and Fixes ---------- */
+
+/*channel unsubscribe popup fix*/
+yt-confirm-dialog-renderer.style-scope.ytd-popup-container {
+background: none;
 }
-
-/* fix channel posts comment sorting dropdown */
-tp-yt-paper-listbox.yt-dropdown-menu {
-    background: #282828a1;
-    backdrop-filter: blur(15px);
+/* collaborators popup fix */
+dialog-layout.yt-spec-dialog-layout.yt-spec-dialog-layout--dialog-layout-responsive {
+background: none;
 }
-
-
+/* remove channel checkmark background */
+badge-shape.yt-badge-shape.yt-badge-shape--default.yt-badge-shape--no-text.yt-badge-shape--typography {
+    background: none;
+}
 
 
 
