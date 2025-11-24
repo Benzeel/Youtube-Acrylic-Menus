@@ -4,7 +4,7 @@
 @description    Add translucency to most menus that pop up on youtube.
 @author         Benzeel
 @license        GNU GPLv3
-@version        0.6
+@version        0.7
 @homepageURL    https://github.com/Benzeel/Youtube-Acrylic-Menus
 @supportURL     https://github.com/Benzeel/Youtube-Acrylic-Menus/issues
 @preprocessor stylus
@@ -110,6 +110,10 @@ if blurfix {
         #ytp-id-7 {
         --yt-frosted-glass-backdrop-filter-override: blur(blurstamount);
         }
+		.ytPlayerQuickActionButtonsHostDisableBackdropFilter:not(:empty) {
+		backdrop-filter: blur(blurfxamount);
+		} 
+
 }
 
 
