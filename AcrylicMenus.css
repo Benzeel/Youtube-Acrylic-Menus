@@ -1,11 +1,30 @@
 /* ==UserStyle==
 @name           Youtube Acrylic Menus / Youtube Blurred Menus
 @namespace      github.com/openstyles/stylus
-@version        4
 @description    Add translucency to most menus that pop up on youtube.
 @author         Benzeel
+@license        GNU GPLv3
+@version        0.5
 @homepageURL    https://github.com/Benzeel/Youtube-Acrylic-Menus
 @supportURL     https://github.com/Benzeel/Youtube-Acrylic-Menus/issues
+@preprocessor stylus
+
+@var color menubg         'Color & Transparency | Notifs & Account & Create:'  #242424a1
+@var color menubg2        'Color & Transparency | Menus & Dropdowns:'          #242424a1
+@var color sharebg        'Color & Transparency | Share Popup:'                #282828a1
+@var color sharebg2       'Color & Transparency | Share URL Bar:'              #00000063
+@var color search         'Color & Transparency | Search Suggestions:'         #222222bd
+@var color sidebarbg      'Color & Transparency | Sidebar:'                    #0d0d0dbf
+
+@var number nablur        'Blur | Notification & Account Dropdown:'            [35, "px"]
+@var number csblur        'Blur | Comment Sorting Dropdown:'                   [15, "px"]
+@var number ssblur        'Blur | Search Suggestions:'                         [35, "px"]
+@var number ddblur        'Blur | Menus & Dropdowns:'                          [20, "px"]
+@var number smblur        'Blur | Share Menu:'                                 [25, "px"]
+@var number sbblur        'Blur | Sidebar:'                                    [15, "px"]
+
+@var checkbox checkfix    'Fix Verified Check Having a Background'             1
+@var checkbox scrim       'Screen Darkening When Opening Sidebar'              0
 ==/UserStyle== */
 @-moz-document domain("www.youtube.com") {
 
@@ -14,8 +33,8 @@
 
 /*account, notification and account switching menu theming*/
 ytd-multi-page-menu-renderer.style-scope.ytd-popup-container {
-        backdrop-filter: blur(35px);
-        background: #1d1d1dad;
+        backdrop-filter: blur(nablur);
+        background: menubg !important;
 }
 
         .ytd-multi-page-menu-renderer {
@@ -28,48 +47,41 @@ div#guide-content.style-scope.ytd-app {
     background: none;
 }
         div#contentContainer.style-scope.tp-yt-app-drawer {
-           background: #0d0d0dbf;
-           backdrop-filter: blur(10px);
+           background: sidebarbg !important;
+           backdrop-filter: blur(sbblur);
         }
         /*disable screen darkening when opening/closing sidebar*/
-        #scrim.visible.tp-yt-app-drawer {
-        	opacity: 0;
-        }
+        if scrim {
+            #scrim.visible.tp-yt-app-drawer {
+        	    opacity: scrim;
+          }
+       }
 
 /*dropdown theming*/
 .ytContextualSheetLayoutHost, ytd-menu-popup-renderer.style-scope {
-    background-color: #1e1e1eb3;
+    background-color: menubg2 !important;
+    backdrop-filter: blur(ddblur);
 }
-        /* comment sorting dropdown*/
-        tp-yt-paper-listbox#menu.dropdown-content.style-scope.yt-dropdown-menu {
-           background: #4f4f4f2b;
-           backdrop-filter: blur(15px)
-        }
         /*comment sorting dropdown */
         tp-yt-paper-listbox.yt-dropdown-menu {
-           background: #282828a1;
-           backdrop-filter: blur(15px);
-        }
-        /*create dropdown */
-        ytd-multi-page-menu-renderer.style-scope.ytd-popup-container {
-        background: #7575752e;
+           background: menubg2 !important;
+           backdrop-filter: blur(csblur);
         }
 
 /*share menu*/
 tp-yt-paper-dialog.style-scope {
-    background: #282828a1;
-    backdrop-filter: blur(30px)
+    background: sharebg !important;
+    backdrop-filter: blur(smblur)
 }
     /*link bar transparency*/
     div#bar.style-scope.yt-copy-link-renderer {
-    background: #00000063;
+    background: sharebg2 !important;
     }
 
-    
 /*search popover styling*/
 .ytSearchboxComponentSuggestionsContainerScrollable {
-    background: #222222bd;
-    backdrop-filter: blur(35px);
+    background: search !important;
+    backdrop-filter: blur(ssblur);
 }
 
 
@@ -84,10 +96,11 @@ dialog-layout.yt-spec-dialog-layout.yt-spec-dialog-layout--dialog-layout-respons
 background: none;
 }
 /* remove channel checkmark background */
-badge-shape.yt-badge-shape.yt-badge-shape--default.yt-badge-shape--no-text.yt-badge-shape--typography {
-    background: none;
+if checkfix {
+    badge-shape.yt-badge-shape.yt-badge-shape--default.yt-badge-shape--no-text.yt-badge-shape--typography {
+      background: none;
+    }
 }
-
 
 
 
