@@ -4,7 +4,7 @@
 @description    Add translucency to most menus that pop up on youtube.
 @author         Benzeel
 @license        GNU GPLv3
-@version        0.5
+@version        0.6
 @homepageURL    https://github.com/Benzeel/Youtube-Acrylic-Menus
 @supportURL     https://github.com/Benzeel/Youtube-Acrylic-Menus/issues
 @preprocessor stylus
@@ -22,9 +22,12 @@
 @var number ddblur        'Blur | Menus & Dropdowns:'                          [20, "px"]
 @var number smblur        'Blur | Share Menu:'                                 [25, "px"]
 @var number sbblur        'Blur | Sidebar:'                                    [15, "px"]
+@var number blurfxamount  'Blur | Player Controls:'                            [5,  "px"]
+@var number blurstamount  'Blur | Player Settings Popup:'                      [15, "px"]
 
 @var checkbox checkfix    'Fix Verified Check Having a Background'             1
 @var checkbox scrim       'Screen Darkening When Opening Sidebar'              0
+@var checkbox blurfix     'Fix Player Controls not having blur'                1
 ==/UserStyle== */
 @-moz-document domain("www.youtube.com") {
 
@@ -51,11 +54,9 @@ div#guide-content.style-scope.ytd-app {
            backdrop-filter: blur(sbblur);
         }
         /*disable screen darkening when opening/closing sidebar*/
-        if scrim {
             #scrim.visible.tp-yt-app-drawer {
         	    opacity: scrim;
           }
-       }
 
 /*dropdown theming*/
 .ytContextualSheetLayoutHost, ytd-menu-popup-renderer.style-scope {
@@ -101,9 +102,15 @@ if checkfix {
       background: none;
     }
 }
-
-
-
+/*fix player controls not having backdrop blurring*/
+if blurfix {
+        .ytp-chrome-bottom {
+        --yt-frosted-glass-backdrop-filter-override: blur(blurfxamount);
+        }
+        #ytp-id-7 {
+        --yt-frosted-glass-backdrop-filter-override: blur(blurstamount);
+        }
+}
 
 
 
