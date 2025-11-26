@@ -4,30 +4,41 @@
 @description    Add translucency to most menus that pop up on youtube.
 @author         Benzeel
 @license        GNU GPLv3
-@version        7
+@version        8
 @homepageURL    https://github.com/Benzeel/Youtube-Acrylic-Menus
 @supportURL     https://github.com/Benzeel/Youtube-Acrylic-Menus/issues
 @preprocessor stylus
 
-@var color menubg         'Color & Transparency | Notifs & Account & Create:'  #242424a1
-@var color menubg2        'Color & Transparency | Menus & Dropdowns:'          #242424a1
-@var color sharebg        'Color & Transparency | Share Popup:'                #282828a1
-@var color sharebg2       'Color & Transparency | Share URL Bar:'              #00000063
-@var color search         'Color & Transparency | Search Suggestions:'         #222222bd
-@var color sidebarbg      'Color & Transparency | Sidebar:'                    #0d0d0dbf
+@var color menubg         'Color & Transparency | Notifs & Account & Create:'  					 #242424a1
+@var color menubg2        'Color & Transparency | Menus & Dropdowns:'          					 #242424a1
+@var color sharebg        'Color & Transparency | Share Popup:'             					 #282828a1
+@var color sharebg2       'Color & Transparency | Share URL Bar:'            					 #00000063
+@var color search         'Color & Transparency | Search Suggestions:'       					 #222222bd
+@var color sidebarbg      'Color & Transparency | Sidebar:'                   					 #0d0d0dbf
+@var color mpbg           'Color & Transparency | Miniplayer:'                 					 #222222bf
+@var color mpbg2          'Color & Transparency | Miniplayer Playlist Header:' 					 #22222263
+@var color mpbg3          'Color & Transparency | Miniplayer Playlist Body:'   					 #141414ab
+@var color mpplselc       'Color & Transparency | Miniplayer Playlist Video Selected:'  		 #ffffff3b
+@var color mpplselct      'Color & Transparency | Miniplayer Playlist Video Selected Text:'   	 #fff
+@var color mpplselca      'Color & Transparency | Miniplayer Playlist Video Selected Arrow:'   	 #fff
 
-@var number nablur        'Blur | Notification & Account Dropdown:'            [35, "px"]
-@var number csblur        'Blur | Comment Sorting Dropdown:'                   [15, "px"]
-@var number ssblur        'Blur | Search Suggestions:'                         [35, "px"]
-@var number ddblur        'Blur | Menus & Dropdowns:'                          [20, "px"]
-@var number smblur        'Blur | Share Menu:'                                 [25, "px"]
-@var number sbblur        'Blur | Sidebar:'                                    [15, "px"]
-@var number blurfxamount  'Blur | Player Controls:'                            [5,  "px"]
-@var number blurstamount  'Blur | Player Settings Popup:'                      [15, "px"]
+@var number nablur        'Blur | Notification & Account Dropdown:'           					 [35, "px"]
+@var number csblur        'Blur | Comment Sorting Dropdown:'                  					 [15, "px"]
+@var number ssblur        'Blur | Search Suggestions:'                         					 [35, "px"]
+@var number ddblur        'Blur | Menus & Dropdowns:'                         					 [20, "px"]
+@var number smblur        'Blur | Share Menu:'                                					 [25, "px"]
+@var number sbblur        'Blur | Sidebar:'                                   					 [15, "px"]
+@var number blurfxamount  'Blur | Player Controls:'                           					 [5,  "px"]
+@var number blurstamount  'Blur | Player Settings Popup:'                     					 [15, "px"]
+@var number mpblur        'Blur | miniplayer:'                                 					 [20, "px"]
+@var number pttblur       'Blur | Player Tooltip Blur:'                                 		 [3, "px"]
 
-@var checkbox checkfix    'Fix Verified Check Having a Background'             1
-@var checkbox scrim       'Screen Darkening When Opening Sidebar'              0
-@var checkbox blurfix     'Fix Player Controls not having blur'                1
+@var checkbox checkfix    'Fix Verified Check Having a Background:'                              1
+@var checkbox scrim       'Screen Darkening When Opening Sidebar:'                               0
+@var checkbox blurfix     'Fix Player Controls not having blur:'                                 1
+@var checkbox mpplborder  'Remove Miniplayer Playlist Border:'                                   1
+@var checkbox mpplsel     'Enable Theming for Miniplayer Playlist Selected Video Overlay:'       1
+@var checkbox enpttblur   'Enable Experimental Tooltip Blurring:'                                1
 ==/UserStyle== */
 @-moz-document domain("www.youtube.com") {
 
@@ -42,9 +53,9 @@ ytd-multi-page-menu-renderer.style-scope.ytd-popup-container {
 
         .ytd-multi-page-menu-renderer {
               background: none;
-              background-color: transparent;
+              background-color: none;
         }
-
+       
 /*sidebar theming*/ 
 div#guide-content.style-scope.ytd-app {
     background: none;
@@ -68,7 +79,10 @@ div#guide-content.style-scope.ytd-app {
            background: menubg2 !important;
            backdrop-filter: blur(csblur);
         }
-
+		/*chat hamburger menu blur*/
+		tp-yt-iron-dropdown.yt-live-chat-app ytd-menu-popup-renderer {
+			backdrop-filter: blur(ddblur);
+		}
 /*share menu*/
 tp-yt-paper-dialog.style-scope {
     background: sharebg !important;
@@ -85,16 +99,47 @@ tp-yt-paper-dialog.style-scope {
     backdrop-filter: blur(ssblur);
 }
 
+/*chat top fans info popup*/
+#inner.yt-live-chat-dialog-renderer {
+	background: menubg2;
+	backdrop-filter: blur(ddblur);
+}
 
+/*miniplayer infobar*/
+.ytdMiniplayerInfoBarHost {
+	background: none;
+	}
+		.ytdMiniplayerComponentContent {
+			backdrop-filter: blur(mpblur);
+  		    background: mpbg; 
+		}
+		.header.ytd-playlist-panel-renderer {
+			background: mpbg2;
+		}
+		.playlist-items.ytd-playlist-panel-renderer {
+      		background: mpbg3;
+}
 /* -------- Patches and Fixes ---------- */
 
+/*create clip help/info + discard clip popup*/
+yt-confirm-dialog-renderer[dialog][dialog][dialog]{
+	background: none;
+}
+/*report popup*/
+ytd-engagement-panel-section-list-renderer[dialog] #content.ytd-engagement-panel-section-list-renderer {
+	background: none;
+}
+/*channel info theming fix*/
+#header.ytd-engagement-panel-title-header-renderer {
+	background: none;
+}
 /*channel unsubscribe popup fix*/
 yt-confirm-dialog-renderer.style-scope.ytd-popup-container {
-background: none;
+	background: none;
 }
 /* collaborators popup fix */
 dialog-layout.yt-spec-dialog-layout.yt-spec-dialog-layout--dialog-layout-responsive {
-background: none;
+	background: none;
 }
 /* remove channel checkmark background */
 if checkfix {
@@ -110,11 +155,48 @@ if blurfix {
         #ytp-id-7 {
         --yt-frosted-glass-backdrop-filter-override: blur(blurstamount);
         }
-		.ytPlayerQuickActionButtonsHostDisableBackdropFilter:not(:empty) {
-		backdrop-filter: blur(blurfxamount);
-		} 
-
 }
+
+/*Experimental player Tooltip Blur*/
+if enpttblur {
+		.ytp-tooltip-text-wrapper {
+			border-radius: 8px;
+			backdrop-filter: blur(pttblur);
+		}
+		.yte-button-tooltip.ytp-tooltip.ytp-bottom {	
+   		 border-radius: 8px;
+			backdrop-filter: blur(pttblur);
+		}
+}
+/*fix youtube enhancer (plugin) tooltips*/
+/*this doesnt work and im going to kill someone i think
+[class="yte-button-tooltip ytp-tooltip ytp-bottom"] {
+background: rgb(0, 0, 0);
+backdrop-filter: blur(3px) !important;
+}*/
+
+/*Remove miniplayer playlist border*/
+if mpplborder {
+		#container.ytd-playlist-panel-renderer{
+			border: none;
+		}
+}
+/*Enable Theming for Miniplayer Selected Video Colour Overlay*/
+if mpplsel {
+	ytd-playlist-panel-video-renderer{
+		--yt-active-playlist-panel-background-color: mpplselc;
+		--yt-lightsource-primary-title-color: mpplselct;
+		--yt-lightsource-secondary-title-color: mpplselca;
+	}
+}
+
+
+
+
+
+
+
+
 
 
 
