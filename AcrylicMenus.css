@@ -4,7 +4,7 @@
 @description    Add translucency to most menus that pop up on youtube.
 @author         Benzeel
 @license        GNU GPLv3
-@version        8
+@version        9
 @homepageURL    https://github.com/Benzeel/Youtube-Acrylic-Menus
 @supportURL     https://github.com/Benzeel/Youtube-Acrylic-Menus/issues
 @preprocessor stylus
@@ -155,6 +155,12 @@ if blurfix {
         #ytp-id-7 {
         --yt-frosted-glass-backdrop-filter-override: blur(blurstamount);
         }
+ 		.ytPlayerQuickActionButtonsHostDisableBackdropFilter:not(:empty) {
+		backdrop-filter: blur(blurfxamount);
+		}		
+		.ytp-fullscreen-grid-expand-button {
+		backdrop-filter: blur(blurfxamount);
+		}
 }
 
 /*Experimental player Tooltip Blur*/
@@ -164,17 +170,24 @@ if enpttblur {
 			backdrop-filter: blur(pttblur);
 		}
 		.yte-button-tooltip.ytp-tooltip.ytp-bottom {	
-   		 border-radius: 8px;
+   		    border-radius: 8px;
 			backdrop-filter: blur(pttblur);
 		}
-}
-/*fix youtube enhancer (plugin) tooltips*/
-/*this doesnt work and im going to kill someone i think
-[class="yte-button-tooltip ytp-tooltip ytp-bottom"] {
-background: rgb(0, 0, 0);
-backdrop-filter: blur(3px) !important;
-}*/
 
+		/*fix youtube enhancer (firefox plugin) tooltips*/
+		[class="yte-button-tooltip ytp-tooltip ytp-bottom"]  {
+	     	 background: none;
+	  		 position: relative;
+	 	 	 	&::before {
+	       		    content: "";
+	        		position: absolute;
+	       			inset: 0;
+	                backdrop-filter: blur(pttblur);
+			        border-radius: 8px;
+	                z-index: -1;
+    			}
+	}
+}
 /*Remove miniplayer playlist border*/
 if mpplborder {
 		#container.ytd-playlist-panel-renderer{
