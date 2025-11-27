@@ -4,7 +4,7 @@
 @description    Add translucency to most menus that pop up on youtube.
 @author         Benzeel
 @license        GNU GPLv3
-@version        9
+@version        10
 @homepageURL    https://github.com/Benzeel/Youtube-Acrylic-Menus
 @supportURL     https://github.com/Benzeel/Youtube-Acrylic-Menus/issues
 @preprocessor stylus
@@ -39,6 +39,7 @@
 @var checkbox mpplborder  'Remove Miniplayer Playlist Border:'                                   1
 @var checkbox mpplsel     'Enable Theming for Miniplayer Playlist Selected Video Overlay:'       1
 @var checkbox enpttblur   'Enable Experimental Tooltip Blurring:'                                1
+
 ==/UserStyle== */
 @-moz-document domain("www.youtube.com") {
 
@@ -165,13 +166,13 @@ if blurfix {
 
 /*Experimental player Tooltip Blur*/
 if enpttblur {
-		.ytp-tooltip-text-wrapper {
+		.ytp-delhi-modern .ytp-tooltip:not(.ytp-preview) .ytp-tooltip-bottom-text,
+		.yte-button-tooltip.ytp-tooltip.ytp-bottom {
 			border-radius: 8px;
-			backdrop-filter: blur(pttblur);
+			backdrop-filter: blur(pttblur) !important;
 		}
-		.yte-button-tooltip.ytp-tooltip.ytp-bottom {	
-   		    border-radius: 8px;
-			backdrop-filter: blur(pttblur);
+		.ytp-delhi-modern .ytp-tooltip.ytp-tooltip-progress-bar-style .ytp-tooltip-progress-bar-pill  {
+			backdrop-filter: blur(pttblur) !important;
 		}
 
 		/*fix youtube enhancer (firefox plugin) tooltips*/
@@ -183,10 +184,10 @@ if enpttblur {
 	        		position: absolute;
 	       			inset: 0;
 	                backdrop-filter: blur(pttblur);
-			        border-radius: 8px;
+                    border-radius: 8px;
 	                z-index: -1;
     			}
-	}
+	    }
 }
 /*Remove miniplayer playlist border*/
 if mpplborder {
