@@ -4,7 +4,7 @@
 @description    Add translucency to most menus that pop up on youtube.
 @author         Benzeel
 @license        GNU GPLv3
-@version        10
+@version        11
 @homepageURL    https://github.com/Benzeel/Youtube-Acrylic-Menus
 @supportURL     https://github.com/Benzeel/Youtube-Acrylic-Menus/issues
 @preprocessor stylus
@@ -37,8 +37,9 @@
 @var checkbox scrim       'Screen Darkening When Opening Sidebar:'                               0
 @var checkbox blurfix     'Fix Player Controls not having blur:'                                 1
 @var checkbox mpplborder  'Remove Miniplayer Playlist Border:'                                   1
-@var checkbox mpplsel     'Enable Theming for Miniplayer Playlist Selected Video Overlay:'       1
-@var checkbox enpttblur   'Enable Experimental Tooltip Blurring:'                                1
+@var checkbox mpplsel     'Theming for Miniplayer Playlist Selected Video Overlay:'       		 1
+@var checkbox enpttblur   'Experimental Tooltip Blurring:'                                       1
+@var checkbox miniplayer  'Miniplayer Theming:'                                                  1
 
 ==/UserStyle== */
 @-moz-document domain("www.youtube.com") {
@@ -107,18 +108,20 @@ tp-yt-paper-dialog.style-scope {
 }
 
 /*miniplayer infobar*/
-.ytdMiniplayerInfoBarHost {
-	background: none;
+if miniplayer{
+	.ytdMiniplayerInfoBarHost {
+		background: none;
+		}
+			.ytdMiniplayerComponentContent {
+				backdrop-filter: blur(mpblur);
+  		    	background: mpbg; 
+			}
+			.header.ytd-playlist-panel-renderer {
+				background: mpbg2;
+			}
+			.playlist-items.ytd-playlist-panel-renderer {
+      			background: mpbg3;
 	}
-		.ytdMiniplayerComponentContent {
-			backdrop-filter: blur(mpblur);
-  		    background: mpbg; 
-		}
-		.header.ytd-playlist-panel-renderer {
-			background: mpbg2;
-		}
-		.playlist-items.ytd-playlist-panel-renderer {
-      		background: mpbg3;
 }
 /* -------- Patches and Fixes ---------- */
 
