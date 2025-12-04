@@ -4,7 +4,7 @@
 @description    Add translucency to most menus that pop up on youtube.
 @author         Benzeel
 @license        GNU GPLv3
-@version        11
+@version        12
 @homepageURL    https://github.com/Benzeel/Youtube-Acrylic-Menus
 @supportURL     https://github.com/Benzeel/Youtube-Acrylic-Menus/issues
 @preprocessor stylus
@@ -40,6 +40,7 @@
 @var checkbox mpplsel     'Theming for Miniplayer Playlist Selected Video Overlay:'       		 1
 @var checkbox enpttblur   'Experimental Tooltip Blurring:'                                       1
 @var checkbox miniplayer  'Miniplayer Theming:'                                                  1
+@var checkbox ttfix       '(like dislike hover flicker fix) disable non player hover tooltips:'  0
 
 ==/UserStyle== */
 @-moz-document domain("www.youtube.com") {
@@ -207,10 +208,12 @@ if mpplsel {
 	}
 }
 
-
-
-
-
+/* disable non player tooltips to fix like/dislike flickering when hovering due to a positioning bug */
+if ttfix {
+		.ytPopoverComponentHost {
+			display: none !important;
+		}
+}
 
 
 
