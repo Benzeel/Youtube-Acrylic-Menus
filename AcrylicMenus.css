@@ -4,7 +4,7 @@
 @description    Add translucency to most menus that pop up on youtube.
 @author         Benzeel
 @license        GNU GPLv3
-@version        12
+@version        13
 @homepageURL    https://github.com/Benzeel/Youtube-Acrylic-Menus
 @supportURL     https://github.com/Benzeel/Youtube-Acrylic-Menus/issues
 @preprocessor stylus
@@ -13,6 +13,7 @@
 @var color menubg2        'Color & Transparency | Menus & Dropdowns:'          					 #242424a1
 @var color sharebg        'Color & Transparency | Share Popup:'             					 #282828a1
 @var color sharebg2       'Color & Transparency | Share URL Bar:'            					 #00000063
+@var color sharebg2       'Color & Transparency | Share Left & Right Buttons:'            		 #141414b3																		
 @var color search         'Color & Transparency | Search Suggestions:'       					 #222222bd
 @var color sidebarbg      'Color & Transparency | Sidebar:'                   					 #0d0d0dbf
 @var color mpbg           'Color & Transparency | Miniplayer:'                 					 #222222bf
@@ -21,6 +22,7 @@
 @var color mpplselc       'Color & Transparency | Miniplayer Playlist Video Selected:'  		 #ffffff3b
 @var color mpplselct      'Color & Transparency | Miniplayer Playlist Video Selected Text:'   	 #fff
 @var color mpplselca      'Color & Transparency | Miniplayer Playlist Video Selected Arrow:'   	 #fff
+@var color tooltip        'Color & Transparency | Tooltips'  									 #242424a1
 
 @var number nablur        'Blur | Notification & Account Dropdown:'           					 [35, "px"]
 @var number csblur        'Blur | Comment Sorting Dropdown:'                  					 [15, "px"]
@@ -32,6 +34,8 @@
 @var number blurstamount  'Blur | Player Settings Popup:'                     					 [15, "px"]
 @var number mpblur        'Blur | miniplayer:'                                 					 [20, "px"]
 @var number pttblur       'Blur | Player Tooltip Blur:'                                 		 [3, "px"]
+@var number infblur       'Blur | Player Info Card Blur:'                                 		 [3, "px"]
+@var number snpbtns       'Blur | Player Info Card Blur:'                                 		 [10, "px"]
 
 @var checkbox checkfix    'Fix Verified Check Having a Background:'                              1
 @var checkbox scrim       'Screen Darkening When Opening Sidebar:'                               0
@@ -95,7 +99,11 @@ tp-yt-paper-dialog.style-scope {
     div#bar.style-scope.yt-copy-link-renderer {
     background: sharebg2 !important;
     }
-
+	/* next / previous button transparency & blur */
+	.scroll-button.yt-third-party-share-target-section-renderer {
+	background: #141414b3 !important;
+	backdrop-filter: blur(snpbtns);
+	}
 /*search popover styling*/
 .ytSearchboxComponentSuggestionsContainerScrollable {
     background: search !important;
@@ -107,6 +115,16 @@ tp-yt-paper-dialog.style-scope {
 	background: menubg2;
 	backdrop-filter: blur(ddblur);
 }
+
+/* info popup */
+.ytp-cards-teaser-box {
+border-radius: 20px !important;
+backdrop-filter: blur(infblur);
+}
+
+/* player tooltips */
+.ytp-tooltip-opaque .ytp-tooltip-bottom-text {
+background-color: tooltip !important;}
 
 /*miniplayer infobar*/
 if miniplayer{
@@ -146,6 +164,13 @@ yt-confirm-dialog-renderer.style-scope.ytd-popup-container {
 dialog-layout.yt-spec-dialog-layout.yt-spec-dialog-layout--dialog-layout-responsive {
 	background: none;
 }
+/* report and other popup bg fix */
+.style-scope .ytd-popup-container {
+--yt-spec-raised-background: transparent !important;
+}
+/* fix create clip header */
+[class="style-scope ytd-engagement-panel-section-list-renderer"] {
+background: #151515;}
 /* remove channel checkmark background */
 if checkfix {
     badge-shape.yt-badge-shape.yt-badge-shape--default.yt-badge-shape--no-text.yt-badge-shape--typography {
@@ -214,10 +239,6 @@ if ttfix {
 			display: none !important;
 		}
 }
-
-
-
-
 
 
 }
